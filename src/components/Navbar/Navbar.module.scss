@@ -1,0 +1,22 @@
+.nav {
+    width: 20%;
+    background-color: #D81B60;
+    padding: 20px;
+  }
+  .nav ul {
+      list-style: none;
+  }
+
+.item a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  &:hover {
+    text-decoration: underline;
+  }
+  &.active {
+    color: #000;
+  }
+}
+
+

@@ -1,0 +1,38 @@
+.dialogs {
+  display: flex;
+  width: 100%;
+}
+
+.dialogItems {
+  width: 30%;
+  min-width: 30%;
+  padding-right: 30px;
+  position: relative;
+  &:before {
+    content: '';
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 30px;
+    background-color: #ccc;
+  }
+  & a {
+    color: #fff;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.messageItems {
+  width: 70%;
+  min-width: 70%;
+}
+
+
+.dialogItem {
+  color: #fff;
+  font-size: 18px;
+}
