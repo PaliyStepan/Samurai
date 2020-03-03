@@ -6,3 +6,18 @@
 .usersItem img {
   width: 150px;
 }
+
+.selectedPage {
+  font-weight: bold;
+  background-color: green;
+}
+
+.pagination span{
+  text-align: center;
+  padding-top: 5px;
+  cursor: pointer;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #000;
+}

@@ -1,6 +1,8 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 let initialState = {
     users:  [
@@ -13,7 +15,10 @@ let initialState = {
         // {id: 4, photoUrl: 'http://infit.ru/uploads/images/Alex/untitled%20folder/untitled%20folder/untitled%20folder/Denis_1%D0%B4%D0%B8%D0%B5%D1%82%D0%B0.jpg',
         //     followed: true ,fullName: 'Denis', status: 'I`m a boss', location: {city: 'Minsk', country: "Belarus"} }
 
-    ]
+    ],
+    pageSize: 3,
+    totalUsersCount: 0,
+    currentPage: 1
 }
 
 
@@ -46,7 +51,17 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS:
             return {
               ...state,
-              users: [...state.users, ...action.users]
+              users: action.users
+            };
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.currentPage
+            };
+        case SET_TOTAL_USERS_COUNT:
+            return {
+                ...state,
+                totalUsersCount: action.totalCount
             };
         default:
             return state
@@ -68,7 +83,16 @@ export const unfollowAC = (useId) => (
 
 export const sesUsersAC = (users) => ({
     type: SET_USERS, users
-})
+});
+
+export const setCurrentPageAc = (currentPage) => ({
+    type: SET_CURRENT_PAGE, currentPage
+});
+
+
+export const setUsersTotalCountAC = (totalCount) => ({
+    type: SET_TOTAL_USERS_COUNT, totalCount
+});
 
 
 export default usersReducer;
