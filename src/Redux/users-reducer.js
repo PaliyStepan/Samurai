@@ -1,25 +1,21 @@
+import {usersAPI} from "../api/api";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
 
 let initialState = {
-    users:  [
-        // {id: 1, photoUrl: 'https://games-of-thrones.ru/sites/default/files/pictures/allll/Nagiev/7.jpg',
-        //     followed: false ,fullName: 'Dmitry', status: 'I`m a boss', location: {city: 'Moscow', country: "Russia"} },
-        // {id: 2, photoUrl: 'https://pic.rutube.ru/video/19/7c/197c4d75ba2fa8891ba329066fa62a36.png',
-        //     followed: true, fullName: 'Sasha', status: 'I`m a boss', location: {city: 'Kiev', country: "Ukraine"} },
-        // {id: 3, photoUrl: 'https://storage.yandexcloud.net/incrussia-prod/wp-content/uploads/2019/06/Cover_610-1.jpg',
-        //     followed: false, fullName: 'Evgen', status: 'I`m a boss', location: {city: 'Detroit ', country: "USA"} },
-        // {id: 4, photoUrl: 'http://infit.ru/uploads/images/Alex/untitled%20folder/untitled%20folder/untitled%20folder/Denis_1%D0%B4%D0%B8%D0%B5%D1%82%D0%B0.jpg',
-        //     followed: true ,fullName: 'Denis', status: 'I`m a boss', location: {city: 'Minsk', country: "Belarus"} }
-
-    ],
+    users:  [],
     pageSize: 3,
     totalUsersCount: 0,
-    currentPage: 1
-}
+    currentPage: 1,
+    isFetching: false,
+    followingInProgress: []
+};
 
 
 
@@ -63,6 +59,19 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 totalUsersCount: action.totalCount
             };
+        case TOGGLE_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: action.isFetching
+            };
+        case TOGGLE_IS_FOLLOWING_PROGRESS:
+            return {
+                ...state,
+                followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.userId]
+                    : state.followingInProgress.filter(id => id !== action.userId )
+
+            };
         default:
             return state
     }
@@ -71,28 +80,75 @@ const usersReducer = (state = initialState, action) => {
 
 
 
-
-
-
-export const followAC = (useId) => (
+export const followSuccess = (useId) => (
     {type: FOLLOW, useId}
 );
-export const unfollowAC = (useId) => (
+export const unfollowSuccess = (useId) => (
     { type: UNFOLLOW, useId}
 );
-
-export const sesUsersAC = (users) => ({
+export const setUsers = (users) => ({
     type: SET_USERS, users
 });
-
-export const setCurrentPageAc = (currentPage) => ({
+export const setCurrentPage = (currentPage) => ({
     type: SET_CURRENT_PAGE, currentPage
 });
-
-
-export const setUsersTotalCountAC = (totalCount) => ({
+export const setTotalUsersCount = (totalCount) => ({
     type: SET_TOTAL_USERS_COUNT, totalCount
 });
+export const toggleIsFetching = (isFetching) => ({
+    type: TOGGLE_IS_FETCHING, isFetching
+});
+
+export const toggleFollowingProgress = (isFetching, userId) => ({
+    type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId
+});
+
+
+
+export const getUsers =  (currentPage, pageSize) => {
+       return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalCount));
+        })
+    }
+};
+
+export const follow =  (useId) => {
+       return (dispatch) => {
+           dispatch(toggleFollowingProgress(true, useId));
+           usersAPI.follow(useId)
+               .then(response => {
+                   if (response.data.resultCode === 0 ){
+                       dispatch(followSuccess(useId));
+                   }
+                   dispatch(toggleFollowingProgress(false, useId));
+               });
+    }
+};
+
+export const unfollow =  (useId) => {
+       return (dispatch) => {
+           dispatch(toggleFollowingProgress(true, useId));
+           usersAPI.unfollow(useId)
+               .then(response => {
+                   if (response.data.resultCode === 0 ){
+                       dispatch(unfollowSuccess(useId));
+                   }
+                   dispatch(toggleFollowingProgress(false, useId));
+               });
+    }
+};
 
 
 export default usersReducer;
+
+
+
+
+
+
+

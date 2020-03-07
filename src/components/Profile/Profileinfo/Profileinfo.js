@@ -1,11 +1,26 @@
 import React from "react";
 import classes from './Profileinfo.module.scss'
+import Preloader from "../../common/preloader/Preloader";
 
-const Profileinfo = () => {
+const Profileinfo = (props) => {
+    if (!props.profile) {
+        return <Preloader/>
+    }
     return(
         <div className={classes.profileinfo}>
-            <img src="https://www.tokkoro.com/picsup/1049836-creature.jpg" alt=""/>
-            <h1> Меня зовут Жозя</h1>
+            <img src={props.profile.photos.large} alt=""/>
+            <div>
+                <h1> Меня зовут {props.profile.fullName} </h1>
+                <h2> Мой ID = {props.profile.userId}</h2>
+                <div>
+                    <small>Мой статус</small>
+                    {
+                        props.profile.aboutMe ? <div> {props.profile.aboutMe} </div> : null
+                    }
+
+                </div>
+            </div>
+
         </div>
     )
 }
