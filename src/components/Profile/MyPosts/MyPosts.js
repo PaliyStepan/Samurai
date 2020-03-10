@@ -20,22 +20,23 @@ const MyPosts = (props) => {
         props.updateNewPostText(text)
         // let action = updateNewPostActionCreator(text);
         // props.dispatch(action);
-    }
+    };
 
     return(
         <div className={classes.postsBlock}>
             <h3>Мои посты</h3>
-            <p>
-                <textarea
-                    ref={newPostElement}
-                    value={props.newPostText}
-                    onChange={onPostChange}
-                />
-            </p>
-            <p>
-                <button onClick={onAddPost}>Добавить</button>
-            </p>
-
+            <form>
+                <p>
+                    <textarea
+                        ref={newPostElement}
+                        value={props.newPostText}
+                        onChange={onPostChange}
+                    />
+                </p>
+                <p>
+                    <button onClick={onAddPost}>Добавить</button>
+                </p>
+            </form>
             <div className={classes.posts}>
                 {postsElements}
             </div>
