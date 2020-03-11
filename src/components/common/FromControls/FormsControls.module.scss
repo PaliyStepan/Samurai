@@ -1,0 +1,13 @@
+.formСontrol {
+}
+
+.formСontrol.error{
+    & input, & textarea {
+        border: 2px solid red;
+    }
+    & span {
+      font-weight: bold;
+        color: red;
+    }
+}
+
