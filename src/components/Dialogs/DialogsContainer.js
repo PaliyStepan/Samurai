@@ -7,28 +7,28 @@ import {compose} from "redux";
 
 // const DialogsContainer = (props) => {
 //
-//     // let state = props.store.getState().dialogsPage;
+//     // let state = props.fake_store.getState().dialogsPage;
 //     //
 //     // let onSendMessageClick = () => {
-//     //     props.store.dispatch(sendMessageCreator());
+//     //     props.fake_store.dispatch(sendMessageCreator());
 //     // }
 //     //
 //     // let onNewMessageChange = (body) => {
-//     //    props.store.dispatch(updateNewMessageBodyCreator(body));
+//     //    props.fake_store.dispatch(updateNewMessageBodyCreator(body));
 //     // }
 //
 //     return <StoreContext.Consumer>
 //             {
-//                 (store) => {
+//                 (fake_store) => {
 //
-//                     let state = store.getState().dialogsPage;
+//                     let state = fake_store.getState().dialogsPage;
 //
 //                     let onSendMessageClick = () => {
-//                         store.dispatch(sendMessageCreator());
+//                         fake_store.dispatch(sendMessageCreator());
 //                     };
 //
 //                     let onNewMessageChange = (body) => {
-//                         store.dispatch(updateNewMessageBodyCreator(body));
+//                         fake_store.dispatch(updateNewMessageBodyCreator(body));
 //                     };
 //
 //                     return <Dialogs updateNewMessageBody={onNewMessageChange}

@@ -4,16 +4,16 @@ import Preloader from "../../common/preloader/Preloader";
 // import ProfileStatus from "./ProfileStatus";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const Profileinfo = (props) => {
-    if (!props.profile) {
+const Profileinfo = ({profile,status, updateStatus}) => {
+    if (!profile) {
         return <Preloader/>
     }
     return(
         <div className={classes.profileinfo}>
-            <img src={props.profile.photos.large} alt=""/>
+            <img src={profile.photos.large} alt=""/>
             <div>
-                <h1> Меня зовут {props.profile.fullName} </h1>
-                <h2> Мой ID = {props.profile.userId}</h2>
+                <h1> Меня зовут {profile.fullName} </h1>
+                <h2> Мой ID = {profile.userId}</h2>
                 {/*<div>*/}
                 {/*    <small>Мой статус</small>*/}
                 {/*    {*/}
@@ -22,7 +22,7 @@ const Profileinfo = (props) => {
 
                 {/*</div>*/}
                 {/*<ProfileStatus status={props.status} updateStatus={props.updateStatus}/>*/}
-                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
             </div>
 
         </div>

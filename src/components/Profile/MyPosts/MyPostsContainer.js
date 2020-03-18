@@ -7,32 +7,32 @@ import {connect} from "react-redux";
 
 
 
-    // let state = props.store.getState();
+    // let state = props.fake_store.getState();
 
 
     // let addPost = () =>{
-    //     props.store.dispatch(addPostActionCreator());
+    //     props.fake_store.dispatch(addPostActionCreator());
     // }
     //
     // let onPostChange = (text) => {
     //     let action = updateNewPostActionCreator(text);
-    //     props.store.dispatch(action);
+    //     props.fake_store.dispatch(action);
     // }
 
   /*  return(
         <StoreContext.Consumer>
             {
-                (store) => {
+                (fake_store) => {
 
-                    let state = store.getState();
+                    let state = fake_store.getState();
 
                     let addPost = () =>{
-                        store.dispatch(addPostActionCreator());
+                        fake_store.dispatch(addPostActionCreator());
                     };
 
                     let onPostChange = (text) => {
                         let action = updateNewPostActionCreator(text);
-                        store.dispatch(action);
+                        fake_store.dispatch(action);
                     };
 
                    return <MyPosts updateNewPostText={onPostChange}

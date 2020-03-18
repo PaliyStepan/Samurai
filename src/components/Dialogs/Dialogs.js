@@ -21,7 +21,7 @@ const Dialogs = (props) => {
 
     // let onSendMessageClick = () => {
     //     props.sendMessage();
-    //     // props.store.dispatch(sendMessageCreator());
+    //     // props.fake_store.dispatch(sendMessageCreator());
     // };
 
     // let onNewMessageChange = (e) => {

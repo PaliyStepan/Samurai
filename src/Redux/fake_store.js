@@ -1,4 +1,4 @@
-// it is a test store
+// it is a test fake_store
 
 // it`s a master
 // this is another branch
@@ -9,7 +9,7 @@ import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 
-let store = {
+let fake_store = {
 
     _state: {
         profilePage: {
@@ -99,6 +99,6 @@ let store = {
 
 
 
-export default store;
+export default fake_store;
 
-window.store = store
+window.store = fake_store
