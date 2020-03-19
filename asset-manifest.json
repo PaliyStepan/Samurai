@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Samurai/static/css/main.64f10ca8.chunk.css",
-    "main.js": "/Samurai/static/js/main.3e08783a.chunk.js",
-    "main.js.map": "/Samurai/static/js/main.3e08783a.chunk.js.map",
+    "main.js": "/Samurai/static/js/main.c7e17458.chunk.js",
+    "main.js.map": "/Samurai/static/js/main.c7e17458.chunk.js.map",
     "runtime-main.js": "/Samurai/static/js/runtime-main.a21feec1.js",
     "runtime-main.js.map": "/Samurai/static/js/runtime-main.a21feec1.js.map",
     "static/js/2.731c4150.chunk.js": "/Samurai/static/js/2.731c4150.chunk.js",
@@ -17,7 +17,7 @@
     "static/js/5.52126e70.chunk.js": "/Samurai/static/js/5.52126e70.chunk.js",
     "static/js/5.52126e70.chunk.js.map": "/Samurai/static/js/5.52126e70.chunk.js.map",
     "index.html": "/Samurai/index.html",
-    "precache-manifest.140fbe494c08574cff053badeb5313b9.js": "/Samurai/precache-manifest.140fbe494c08574cff053badeb5313b9.js",
+    "precache-manifest.26a3858075d13466c15071e512424085.js": "/Samurai/precache-manifest.26a3858075d13466c15071e512424085.js",
     "service-worker.js": "/Samurai/service-worker.js",
     "static/css/3.2c509ab8.chunk.css.map": "/Samurai/static/css/3.2c509ab8.chunk.css.map",
     "static/css/4.f5bfdac4.chunk.css.map": "/Samurai/static/css/4.f5bfdac4.chunk.css.map",
@@ -31,6 +31,6 @@
     "static/js/runtime-main.a21feec1.js",
     "static/js/2.731c4150.chunk.js",
     "static/css/main.64f10ca8.chunk.css",
-    "static/js/main.3e08783a.chunk.js"
+    "static/js/main.c7e17458.chunk.js"
   ]
 }
