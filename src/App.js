@@ -39,12 +39,21 @@ class App extends React.Component  {
                 <HeaderContainer/>
                 <NavBar/>
                 <div className="app-wrapper-content">
-                    <Route path='/dialogs'
+                    {/*<Route path='/dialogs'
                            render={() =>  <Suspense fallback={Preloader}><DialogsContainer/> </Suspense>}
                     />
                     <Route path='/profile/:userId?'render={withSuspense(ProfileContainer)}/>
                     <Route path='/users' render={withSuspense(UsersContainer)}/>
+                    */}
 
+
+                    <Route path='/dialogs'
+                           render={() => <DialogsContainer/>}
+                    />
+                    <Route path='/profile/:userId?'
+                           render={() => <ProfileContainer/>}
+                    />
+                    <Route path='/users' render={() => <UsersContainer/>}/>
                     <Route path='/news' render={() => <News/>}/>
                     <Route path='/music' render={() => <Music/>}/>
                     <Route path='/settings' render={() => <Settings/>}/>
@@ -66,11 +75,11 @@ let AppContainer = compose(
     connect(mapStateToProps,{ initializeApp })) (App);
 
 const  MainApp = (props) => {
-   return <BrowserRouter >
+   return <HashRouter >
         <Provider store={store}>
             <AppContainer />
         </Provider>
-    </BrowserRouter>
+    </HashRouter>
 };
 
 export default MainApp;
