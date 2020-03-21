@@ -1,9 +1,52 @@
 .header {
-    background-color: greenyellow;
-    width: 100%;
-    padding: 10px 20px;
-  }
+  background-color: #42A5F5;
+  width: 100%;
+  padding: 20px 20px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
   
-  .header img {
-    width: 50px;
+.logo {
+  display: block;
+  & img {
+    height: 50px;
   }
+}
+
+.loginBlock {
+ color: #fff;
+}
+
+.loginBtn {
+  background-color: #fff;
+  display: inline-flex;
+  border: 1px solid #000;
+  color: blue;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 65px;
+  color: #000000;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.loginBlock__row {
+  display: flex;
+  align-items: center;
+}
+
+.loginBlock__name {
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+@media only screen and (max-width: 575px) {
+  .logo img {
+    height: 40px;
+  }
+}

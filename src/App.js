@@ -1,5 +1,5 @@
 import React, {Suspense} from 'react';
-import './App.scss';
+import classes from './App.module.scss';
 import NavBar from './components/Navbar/Navbar';
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
@@ -24,54 +24,56 @@ import {withSuspense} from "./hoc/withSuspense";
 
 
 class App extends React.Component  {
-    catchAllUnhandledErrors = (reason, promise) => {
-        alert('произошла ошибка сервера. Попробуйте ещё раз.')
-    };
+    // catchAllUnhandledErrors = (reason, promise) => {
+    // alert('произошла ошибка сервера. Попробуйте ещё раз.')
+    //  };
     componentDidMount() {
         this.props.initializeApp();
-        window.addEventListener("unhandledrejection" , this.catchAllUnhandledErrors);
+       // window.addEventListener("unhandledrejection" , this.catchAllUnhandledErrors);
     }
     componentWillUnmount() {
-        window.removeEventListener("unhandledrejection" , this.catchAllUnhandledErrors);
+        //window.removeEventListener("unhandledrejection" , this.catchAllUnhandledErrors);
     }
     render(){
         if(!this.props.initialized){
             return <Preloader/>
         }
         return (
-            <div className="app-wrapper">
+            <div className={classes.wrapper}>
                 <HeaderContainer/>
-                <NavBar/>
-                <div className="app-wrapper-content">
-                    {/*<Route path='/dialogs'
+                <main className={classes.main}>
+                    <NavBar/>
+                    <div className={classes.content}>
+                        {/*<Route path='/dialogs'
                            render={() =>  <Suspense fallback={Preloader}><DialogsContainer/> </Suspense>}
                     />
                     <Route path='/profile/:userId?'render={withSuspense(ProfileContainer)}/>
                     <Route path='/users' render={withSuspense(UsersContainer)}/>
                     */}
 
-                    <Switch>
-                        {/*<Route exact path='/'*/}
-                        {/*       render={() => <ProfileContainer/>}*/}
-                        {/*/>*/}
-                        <Route exact path='/'
-                               render={ ()=> <Redirect to={"/profile"}/>}
-                        />
+                        <Switch>
+                            {/*<Route exact path='/'*/}
+                            {/*       render={() => <ProfileContainer/>}*/}
+                            {/*/>*/}
+                            <Route exact path='/'
+                                   render={() => <Redirect to={"/profile"}/>}
+                            />
 
-                        <Route path='/dialogs'
-                               render={() => <DialogsContainer/>}
-                        />
-                        <Route path='/profile/:userId?'
-                               render={() => <ProfileContainer/>}
-                        />
-                        <Route path='/users' render={() => <UsersContainer/>}/>
-                        <Route path='/news' render={() => <News/>}/>
-                        <Route path='/music' render={() => <Music/>}/>
-                        <Route path='/settings' render={() => <Settings/>}/>
-                        <Route path='/login' render={() => <Login/>}/>
-                        <Route path='*' render={() => <div> 404</div>}/>
-                    </Switch>
-                </div>
+                            <Route path='/dialogs'
+                                   render={() => <DialogsContainer/>}
+                            />
+                            <Route path='/profile/:userId?'
+                                   render={() => <ProfileContainer/>}
+                            />
+                            <Route path='/users' render={() => <UsersContainer/>}/>
+                            <Route path='/news' render={() => <News/>}/>
+                            <Route path='/music' render={() => <Music/>}/>
+                            <Route path='/settings' render={() => <Settings/>}/>
+                            <Route path='/login' render={() => <Login/>}/>
+                            <Route path='*' render={() => <div> 404</div>}/>
+                        </Switch>
+                    </div>
+                </main>
             </div>
         );
     }
@@ -88,7 +90,7 @@ let AppContainer = compose(
     connect(mapStateToProps,{ initializeApp })) (App);
 
 const  MainApp = (props) => {
-   return <BrowserRouter >
+   return <BrowserRouter>
         <Provider store={store}>
             <AppContainer />
         </Provider>

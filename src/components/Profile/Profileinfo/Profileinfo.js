@@ -8,7 +8,6 @@ const ProfileInfo = ({profile,status, updateStatus,isOwner,savePhoto, saveProfil
 
     let [editMode, setEditMode] = useState(false);
 
-
     if (!profile) {
         return <Preloader/>
     }
@@ -31,6 +30,7 @@ const ProfileInfo = ({profile,status, updateStatus,isOwner,savePhoto, saveProfil
     return(
         <div className={classes.profileinfo}>
             <img src={profile.photos.large || userPhoto } alt="" className={classes.mainPhoto}/>
+
             {isOwner && <input type={"file"} onChange={onMainPhotoSelected}/>}
 
             { editMode
