@@ -8,7 +8,7 @@ const Header = ({isAuth,login,logout,profile}) => {
         <header className={classes.header}>
             <NavLink to="/profile" className={classes.logo}>
                 <img src={logo} alt="Logo"/>
-            </NavLink>
+            </NavLink> d
 
 
             <div className={classes.loginBlock}>
