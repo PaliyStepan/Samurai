@@ -4,7 +4,7 @@ import NavBar from './components/Navbar/Navbar';
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {HashRouter, BrowserRouter, Route, withRouter} from "react-router-dom";
+import {HashRouter, BrowserRouter, Route, withRouter, Switch, Redirect} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
@@ -24,16 +24,20 @@ import {withSuspense} from "./hoc/withSuspense";
 
 
 class App extends React.Component  {
+    catchAllUnhandledErrors = (reason, promise) => {
+        alert('произошла ошибка сервера. Попробуйте ещё раз.')
+    };
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener("unhandledrejection" , this.catchAllUnhandledErrors);
     }
-
+    componentWillUnmount() {
+        window.removeEventListener("unhandledrejection" , this.catchAllUnhandledErrors);
+    }
     render(){
-
         if(!this.props.initialized){
             return <Preloader/>
         }
-
         return (
             <div className="app-wrapper">
                 <HeaderContainer/>
@@ -46,18 +50,27 @@ class App extends React.Component  {
                     <Route path='/users' render={withSuspense(UsersContainer)}/>
                     */}
 
+                    <Switch>
+                        {/*<Route exact path='/'*/}
+                        {/*       render={() => <ProfileContainer/>}*/}
+                        {/*/>*/}
+                        <Route exact path='/'
+                               render={ ()=> <Redirect to={"/profile"}/>}
+                        />
 
-                    <Route path='/dialogs'
-                           render={() => <DialogsContainer/>}
-                    />
-                    <Route path='/profile/:userId?'
-                           render={() => <ProfileContainer/>}
-                    />
-                    <Route path='/users' render={() => <UsersContainer/>}/>
-                    <Route path='/news' render={() => <News/>}/>
-                    <Route path='/music' render={() => <Music/>}/>
-                    <Route path='/settings' render={() => <Settings/>}/>
-                    <Route path='/login' render={() => <Login/>}/>
+                        <Route path='/dialogs'
+                               render={() => <DialogsContainer/>}
+                        />
+                        <Route path='/profile/:userId?'
+                               render={() => <ProfileContainer/>}
+                        />
+                        <Route path='/users' render={() => <UsersContainer/>}/>
+                        <Route path='/news' render={() => <News/>}/>
+                        <Route path='/music' render={() => <Music/>}/>
+                        <Route path='/settings' render={() => <Settings/>}/>
+                        <Route path='/login' render={() => <Login/>}/>
+                        <Route path='*' render={() => <div> 404</div>}/>
+                    </Switch>
                 </div>
             </div>
         );
@@ -75,11 +88,11 @@ let AppContainer = compose(
     connect(mapStateToProps,{ initializeApp })) (App);
 
 const  MainApp = (props) => {
-   return <HashRouter >
+   return <BrowserRouter >
         <Provider store={store}>
             <AppContainer />
         </Provider>
-    </HashRouter>
+    </BrowserRouter>
 };
 
 export default MainApp;
