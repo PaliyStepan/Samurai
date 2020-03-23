@@ -3,15 +3,18 @@ import classes from './Profileinfo.module.scss'
 import Preloader from "../../common/preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from "../../../Assets/Images/user-img.png";
+import changeIcon from "../../../Assets/Images/change.svg";
 import ProfileDataForm from "./ProfildeDataForm";
-const ProfileInfo = ({profile,status, updateStatus,isOwner,savePhoto, saveProfile}) => {
+import MyPostsContainer from "../MyPosts/MyPostsContainer";
 
+
+
+const ProfileInfo = ({profile,status, updateStatus,isOwner,savePhoto, saveProfile}) => {
     let [editMode, setEditMode] = useState(false);
 
     if (!profile) {
         return <Preloader/>
     }
-
     const onMainPhotoSelected = (e) => {
         if (e.target.files.length ) {
             savePhoto(e.target.files[0]);
@@ -24,40 +27,61 @@ const ProfileInfo = ({profile,status, updateStatus,isOwner,savePhoto, saveProfil
                 setEditMode(false);
             }
         );
-
     };
 
+    // потом убрать
+    let devider =  <ProfileStatusWithHooks status={status} updateStatus={updateStatus} isOwner={isOwner}/>;
+
     return(
-        <div className={classes.profileinfo}>
-            <img src={profile.photos.large || userPhoto } alt="" className={classes.mainPhoto}/>
+        <React.Fragment>
+        <div className={classes.profileInfo}>
+            <div className={classes.avaBlock}>
+                 <img src={profile.photos.large || userPhoto } alt="" className={classes.avaBlock__img}/>
+                {isOwner &&
+                <div className={classes.avaBlock__panel}>
+                    <label className={classes.avaBlock__label}>
+                        <input type={"file"} onChange={onMainPhotoSelected}/>
+                        <img src={changeIcon} alt="icon" className={classes.changeAva}/>
+                    </label>
+                </div>}
+            </div>
+            <div className={classes.profileInfo__data}>
+                {
+                    editMode
+                    ? <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit}/>
+                    : <ProfileData devider={devider}
+                                   profile={profile} isOwner={isOwner} goToEditMode={() => setEditMode(true)}/> }
 
-            {isOwner && <input type={"file"} onChange={onMainPhotoSelected}/>}
-
-            { editMode
-                ? <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit}/>
-                : <ProfileData profile={profile} isOwner={isOwner} goToEditMode={() => setEditMode(true)}/> }
-
-            <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
+                {/*<ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>*/}
+            </div>
         </div>
+            {
+                isOwner && <MyPostsContainer/>
+            }
+
+        </React.Fragment>
     )
 };
 
 
-const ProfileData = ({profile, isOwner, goToEditMode}) => {
+const ProfileData = ({profile, isOwner, goToEditMode,devider}) => {
     return  (
-        <div>
-            <h1> Full name {profile.fullName} </h1>
-            <h2> Мой ID = {profile.userId}</h2>
-            <div>
-                <b>Looking fora a job:</b>  {profile.lookingForAJob ? "yes" : "no"}
+        <div className={classes.profileInfo__get}>
+            <h1> {profile.fullName}</h1>
+            {devider}
+            <div className={classes.profileInfo__row}>
+                <span>My ID:</span>   <b>{profile.userId}  </b>
             </div>
-            <div>
-                <b>My skills:</b>  {profile.lookingForAJobDescription}
+            {/*<div className={classes.profileInfo__row}>*/}
+            {/*    <span>Looking fora a job:</span>   <b>{profile.lookingForAJob ? "yes" : "no"}  </b>*/}
+            {/*</div>*/}
+            <div className={classes.profileInfo__row}>
+                <span>My skills:</span>   <b>{profile.lookingForAJobDescription}  </b>
             </div>
-            <div>
-                <b>About Me</b> {profile.aboutMe }
+            <div className={classes.profileInfo__row}>
+                <span>About Me</span>  <b>{profile.aboutMe }  </b>
             </div>
-            <div className={classes.contacts}>
+            <div className={classes.profileInfo__contacts}>
                 <b>Contacts</b>
                 {
                     Object.keys(profile.contacts).map(key => {
@@ -65,8 +89,7 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
                     })
                 }
             </div>
-            { isOwner && <div> <button onClick={goToEditMode} className={['one' +' '+ 'two']}>Edit</button></div>}
-
+            { isOwner &&  <button onClick={goToEditMode} className={classes.mainBtn}>Edit</button>}
         </div>
     )
 };
@@ -77,7 +100,7 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
 
 
 const Contact = ({contactTitle, contactValue}) => {
-    return <div> <b> {contactTitle}: </b> <a href={contactValue}>{contactValue}</a> </div>
+    return <div className={classes.profileInfo__row}> <b> {contactTitle}: </b> <a href={contactValue}>{contactValue}</a> </div>
 };
 
 export default ProfileInfo

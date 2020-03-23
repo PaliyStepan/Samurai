@@ -19,6 +19,7 @@ import {
     getIsFetching,
     getFollowingInProgress
 } from "../../Redux/users-selectors";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 class UsersContainer extends  React.Component{
@@ -100,7 +101,7 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-    // withAuthRedirect,
+    withAuthRedirect,
     connect(mapStateToProps, {
         follow,
         unfollow,

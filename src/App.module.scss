@@ -14,19 +14,44 @@ body {
   min-width: 320px;
 }
 
+textarea {
+  border: 1px solid #d3d9de;
+  width: 350px;
+  height: 100px;
+  resize: none;
+  padding: 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+a {
+  color: #D81B60;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 10px;
-  height: auto;
-  min-height: 100vh;
 }
 
 .main {
   display: flex;
   flex-grow: 1;
+  align-items: flex-start;
+}
+
+
+
+.content {
+  width: 78%;
+  background-color: #42A5F5;
+  padding: 20px;
 }
 
 
@@ -34,8 +59,21 @@ body {
   width: 150px;
 }
 
-.content {
-  flex-grow: 1;
-  background-color: #42A5F5;
-  padding: 20px;
+@media only screen and (max-width: 767px) {
+  .main {
+    display: block;
+  }
+
+  .content{
+    width: 100%;
+    padding: 10px;
+  }
+
+  textarea {
+    width: 100%;
+  }
+
+  html {
+    font-size: 14px;
+  }
 }

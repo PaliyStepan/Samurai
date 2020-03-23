@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-// import classes from "./Profileinfo.module.scss"
+import classes from "./Profileinfo.module.scss"
 
 const ProfileStatusWithHooks = (props) => {
 
@@ -28,25 +28,73 @@ const ProfileStatusWithHooks = (props) => {
 
 
 
+
+
     return (
-        <div>
-            { !editMode &&
-            <div>
-                <b>Статус: </b>
-                <span onDoubleClick={activatedMode}>
-                   {props.status || "----- " }
-                </span>
-            </div>
+        <div className={classes.profileStatus}>
+
+                    {/*{ !editMode &&*/}
+                    {/*<div className={classes.profileStatus__get}>*/}
+                    {/*    <span onClick={activatedMode} className={classes.profileStatus__current}>*/}
+                    {/*       {props.status || <span className={classes.statusEmpty}>изменить статус </span>}*/}
+                    {/*    </span>*/}
+                    {/*</div>*/}
+                    {/*}*/}
+                    {/*{editMode &&*/}
+                    {/*<div className={classes.profileStatus__set}>*/}
+                    {/*    <input autoFocus={true} onBlur={deactivatedEditMode} onChange={onStatusChange}*/}
+                    {/*          value={status} onKeyPress={(event)=> {if(event.key === 'Enter'){*/}
+                    {/*                deactivatedEditMode()*/}
+                    {/*            }}}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
+                    {/*} */}
+
+                    {/*САМ СДЕЛАЛ, убрать потом*/}
+
+            {
+                props.isOwner
+                    ?
+                        !editMode
+                        ? <div className={classes.profileStatus__get}>
+                        <span onClick={activatedMode} className={classes.profileStatus__current}>
+                           {props.status || <span className={classes.statusEmpty}>изменить статус </span>}
+                        </span>
+                            </div>
+                        : <div className={classes.profileStatus__set}>
+                                <input autoFocus={true} onBlur={deactivatedEditMode} onChange={onStatusChange}
+                                       value={status} onKeyPress={(event)=> {if(event.key === 'Enter'){
+                                    deactivatedEditMode()
+                                }}}
+                                />
+                            </div>
+                    : props.status || <span className={classes.statusEmpty}>нет статуса </span>
+
             }
-            {editMode &&
-            <div>
-                <input autoFocus={true} onBlur={deactivatedEditMode} onChange={onStatusChange}
-                      value={status}
-                />
-            </div>
-            }
+
+
+            {/*{ !editMode &&*/}
+            {/*<div className={classes.profileStatus__get}>*/}
+            {/*            <span onClick={activatedMode} className={classes.profileStatus__current}>*/}
+            {/*               {props.status || <span className={classes.statusEmpty}>изменить статус </span>}*/}
+            {/*            </span>*/}
+            {/*</div>*/}
+            {/*}*/}
+            {/*{editMode &&*/}
+            {/*<div className={classes.profileStatus__set}>*/}
+            {/*    <input autoFocus={true} onBlur={deactivatedEditMode} onChange={onStatusChange}*/}
+            {/*           value={status} onKeyPress={(event)=> {if(event.key === 'Enter'){*/}
+            {/*        deactivatedEditMode()*/}
+            {/*    }}}*/}
+            {/*    />*/}
+            {/*</div>*/}
+            {/*}*/}
+
+
+
+
         </div>
     )
-}
+};
 
 export default ProfileStatusWithHooks

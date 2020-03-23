@@ -19,7 +19,7 @@
  color: #fff;
 }
 
-.loginBtn {
+.mainBtn {
   background-color: #fff;
   display: inline-flex;
   border: 1px solid #000;
@@ -33,6 +33,12 @@
   border-radius: 3px;
   font-size: 16px;
   cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+  }
 }
 
 .loginBlock__row {

@@ -1,9 +1,55 @@
 .usersItem {
   display: flex;
   align-items: center;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 20px;
+}
+
+.usersItem__let {
 }
 
 .usersItem img {
   width: 150px;
+  margin-bottom: 10px;
 }
+
+.follow__btn {
+  transition: all 0.2s;
+  width: 150px;
+  height: 30px;
+  border: none;
+  background-color: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid #ffffff;
+  &:hover {
+    background-color: transparent;
+    color: #ffffff;
+  }
+}
+
+.usersItem__info h3{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.follow__btn_reverse {
+  background-color: transparent;
+  color: #ffffff;
+  &:hover {
+    background-color: #ffffff;
+    color: #000;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .usersItem__info {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 

@@ -5,36 +5,38 @@ import {reduxForm} from "redux-form";
 
 const ProfileDataForm = ({handleSubmit, profile, error}) => {
     return  (
-        <form onSubmit={handleSubmit}>
-            <div> Full name {createField("Full name", "fullName", [], Input)} </div>
-            <div>
-                <b>Looking fora a job:</b>
-                {createField ("", "lookingForAJob",[], Input,{type:"checkbox"} )}
-            </div>
+        <form onSubmit={handleSubmit} className={classes.profileForm}>
+            <div className={classes.profileForm__row}>   <b>  Full name</b> {createField("Full name", "fullName", [], Input)} </div>
+            {/*<div className={classes.profileForm__row}>*/}
+            {/*    <b>Looking fora a job:</b>*/}
+            {/*    {createField ("", "lookingForAJob",[], Input,{type:"checkbox"} )}*/}
+            {/*</div>*/}
 
-            <div>
+            <div className={classes.profileForm__row}>
                 <b>My skills:</b>
                 {createField ("My skills", "lookingForAJobDescription",[], Textarea )}
             </div>
-            <div>
+            <div className={classes.profileForm__row}>
                 <b>About me:</b>
                 {createField ("About me", "aboutMe",[], Input )}
             </div>
-            <div>
+            <div className={classes.profileForm__row}>
                 <b>Contacts</b>
+                <div className={classes.profileForm__rowInner}>
                 {
                     Object.keys(profile.contacts).map(key => {
-                        return <div key={key}>
+                        return <div key={key} className={classes.profileForm__row}>
                             <b>{key}</b>
                                 {createField(key, "contacts." + key, [], Input)}
                         </div>
                     })
                 }
+                </div>
             </div>
 
             { error && <div className={classes.formSummaryError}> {error}</div>
             }
-           <button>Save</button>
+           <button className={classes.mainBtn}>Save</button>
 
         </form>
     )

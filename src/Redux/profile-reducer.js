@@ -9,18 +9,14 @@ const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
 let initialState = {
     posts:  [
-        {id: 1, message: 'Hi Man', likesCount: 150},
-        {id: 2, message: 'Hi Bitch', likesCount: 66},
-        {id: 3, message: 'Было круто', likesCount: 216},
-        {id: 4, message: 'Зря пошли', likesCount: 22},
+        {id: 1, message: 'Продаю свою волгу. Кому надо ?', likesCount: 150},
+        {id: 2, message: 'Было круто', likesCount: 216},
+        {id: 3, message: 'Зря пошли, лучше бы остались дома', likesCount: 22},
     ],
     // newPostText: 'Текст из State',
     profile: null,
     status: ""
-}
-
-
-
+};
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -36,12 +32,6 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: ''
             };
         }
-        // case UPDATE_NEW_POST_TEXT: {
-        //     return {
-        //         ...state,
-        //         newPostText: action.newText
-        //     };
-        // }
         case SET_USER_PROFILE: {
             return {
                 ...state,

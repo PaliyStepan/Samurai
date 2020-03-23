@@ -4,22 +4,25 @@ import {NavLink} from "react-router-dom";
 import logo from "../../Assets/Images/react.svg";
 
 const Header = ({isAuth,login,logout,profile}) => {
+    if (profile) {
+    }
     return(
         <header className={classes.header}>
             <NavLink to="/profile" className={classes.logo}>
                 <img src={logo} alt="Logo"/>
-            </NavLink> d
+            </NavLink>
 
 
             <div className={classes.loginBlock}>
 
                 {isAuth
-                        ?  <div className={classes.loginBlock__row}><img src="" alt="33"/>      <div className={classes.loginBlock__name}>{login}</div>  <button onClick={logout} className={classes.loginBtn}>Logout</button>  </div>
-                        : <div className={classes.loginBlock__row}><NavLink to={'/login'} className={classes.loginBtn}>Login</NavLink> </div>
+                        //?  <div className={classes.loginBlock__row}> { profile &&  <img src={profile.photos.large} alt="ava" className={classes.mainPhoto}/> }<div className={classes.loginBlock__name}>{login}</div>  <button onClick={logout} className={classes.loginBtn}>Logout</button>  </div>
+                        ?  <div className={classes.loginBlock__row}> <div className={classes.loginBlock__name}>{login}</div>  <button onClick={logout} className={classes.mainBtn}>Logout</button>  </div>
+                        : <div className={classes.loginBlock__row}><NavLink to={'/login'} className={classes.mainBtn}>Login</NavLink> </div>
                 }
             </div>
         </header>
     )
-}
+};
 
 export default Header

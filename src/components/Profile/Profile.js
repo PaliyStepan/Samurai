@@ -1,6 +1,6 @@
 import React from 'react'
 import ProfileInfo from "./Profileinfo/Profileinfo";
-import MyPostsContainer from "./MyPosts/MyPostsContainer";
+//import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (props) => {
     return (
@@ -12,7 +12,7 @@ const Profile = (props) => {
                          updateStatus={props.updateStatus}
                          saveProfile={props.saveProfile}
             />
-            <MyPostsContainer/>
+            {/*<MyPostsContainer/>*/}
         </div>
     )
 };

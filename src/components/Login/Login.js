@@ -10,12 +10,15 @@ import classes from "./Login.module.sass"
 //const LoginForm = (props) =>  {   // деструктр.
 const LoginForm = ({handleSubmit,error, captchaUrl}) =>  {
     return (
-        <form onSubmit={handleSubmit}>
-            {createField("Email", "email", [required], Input) }
-            {createField("Password", "password", [required], Input, {type: "password"}) }
-            {createField(null, "rememberMe", [], Input, {type: "checkbox"}, "remember me") }
+        <form onSubmit={handleSubmit} className={classes.loginForm}>
+            {createField("Email", "email", [required], Input,{type: "email", className:classes.formInput}) }
+            {createField("Password", "password", [required], Input, {type: "password",className:classes.formInput}) }
 
-          {/*  <div>
+
+          {/*
+          {createField("rememberMe", null, "rememberMe", [], Input, {type: "checkbox"}, "remember me") }
+
+          <div>
                 <Field placeholder={"Email"}
                        component={Input}
                        name={"email"}
@@ -34,11 +37,9 @@ const LoginForm = ({handleSubmit,error, captchaUrl}) =>  {
             { captchaUrl && <img src={captchaUrl}/>}
             { captchaUrl && createField("Введите текст", "captcha", [required], Input)      }
 
-            { error && <div className={classes.formSummaryError}> {error}</div>
+            { error && <div className={classes.formSummaryError}> <span>{error}</span> </div>
             }
-            <div>
-                <button>Login</button>
-            </div>
+            <button className={classes.mainBtn}>Login</button>
         </form>
     )
 };
