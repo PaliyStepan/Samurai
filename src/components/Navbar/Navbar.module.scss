@@ -1,13 +1,21 @@
 .nav {
-    width: 21%;
-    min-width: 21%;
-    background-color: #D81B60;
-    padding: 20px;
+    width: 270px;
+    min-width: 270px;
     margin-right: 1%;
   }
-  .nav ul {
-      list-style: none;
-  }
+.nav__list{
+  list-style: none;
+  background-color: #D81B60;
+  padding: 20px;
+}
+
+.navIsFixed {
+  position: fixed;
+  top: 0;
+  width: 270px;
+}
+
+
 
 .item a {
   color: #fff;

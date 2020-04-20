@@ -7,34 +7,13 @@ import {login} from "../../Redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import classes from "./Login.module.sass"
 
-//const LoginForm = (props) =>  {   // деструктр.
 const LoginForm = ({handleSubmit,error, captchaUrl}) =>  {
     return (
         <form onSubmit={handleSubmit} className={classes.loginForm}>
             {createField("Email", "email", [required], Input,{type: "email", className:classes.formInput}) }
             {createField("Password", "password", [required], Input, {type: "password",className:classes.formInput}) }
 
-
-          {/*
-          {createField("rememberMe", null, "rememberMe", [], Input, {type: "checkbox"}, "remember me") }
-
-          <div>
-                <Field placeholder={"Email"}
-                       component={Input}
-                       name={"email"}
-                       validate={[required]}
-                />
-            </div>
-            <div>
-                <Field placeholder={"Password"} component={Input} name={"password"} type="password"
-                       validate={[required]}
-                />
-            </div>
-            */}
-            {/*<div>*/}
-            {/*    <Field type="checkbox" component={Input} name={"rememberMe"}/> Remember me*/}
-            {/*</div>*/}
-            { captchaUrl && <img src={captchaUrl}/>}
+            { captchaUrl && <img src={captchaUrl} alt="captcha"/>}
             { captchaUrl && createField("Введите текст", "captcha", [required], Input)      }
 
             { error && <div className={classes.formSummaryError}> <span>{error}</span> </div>

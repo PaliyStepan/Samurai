@@ -1,15 +1,16 @@
-.descr {
-    color: #000;
-    margin-bottom: 20px;
-}
+
 
 .postBlock {
     margin-bottom: 25px;
 }
 
+.posts {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 .post {
     color: #fff;
-
 }
 
 .postsBlock {

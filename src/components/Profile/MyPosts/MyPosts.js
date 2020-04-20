@@ -38,7 +38,6 @@ const MyPosts = React.memo(props => {
         <div className={classes.postsBlock}>
             <div className={classes.postBlock}>
                 <h3>Мои посты</h3>
-                <p className={classes.descr}> !!  Это статические посты, которые берутся из массива постов, в state. Можно добавить свой пост, он добавится в конец блока, но никуда не сохранится, т.к. в API сервера нет данного функционала !!</p>
                 <AddPostFormRedux onSubmit={onAddPost}/>
             </div>
             <div className={classes.posts}>

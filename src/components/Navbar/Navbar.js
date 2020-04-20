@@ -1,11 +1,34 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import classes from './Navbar.module.scss'
 import {NavLink} from 'react-router-dom';
+import cn from "classnames";
+
 
 const NavBar = () => {
+
+    const [isScroll, setIsScroll] = useState(false);
+
+    useEffect(()=>{
+        window.addEventListener("scroll", () =>{
+            const isTop = window.scrollY > 108;
+
+            if (window.innerWidth > 991) {
+                if (isTop) {
+                    setIsScroll(true)
+                } else {
+                    setIsScroll(false)
+                }
+            }
+        })
+    }, []);
+
+    const wrapClasses = cn(classes.nav__list,{
+        [classes.navIsFixed] : isScroll
+    });
+
     return(
-        <nav className={classes.nav}> 
-        <ul>
+        <nav className={classes.nav}>
+        <ul className={wrapClasses}>
           <li className={classes.item}>
             <NavLink to="/profile" activeClassName={classes.active}>
               Profile
@@ -21,24 +44,9 @@ const NavBar = () => {
               Users
             </NavLink>
           </li>
-          {/*<li className={classes.item}>
-            <NavLink to="/news" activeClassName={classes.active}>
-              News
-            </NavLink>
-          </li>
-          <li className={classes.item}>
-            <NavLink to="/music" activeClassName={classes.active}>
-              Music
-            </NavLink>
-          </li>
-          <li className={classes.item}>
-            <NavLink to="/settings" activeClassName={classes.active}>
-              Settings
-            </NavLink>
-          </li>*/}
         </ul>
-      </nav> 
+      </nav>
     )
-}
+};
 
 export default NavBar

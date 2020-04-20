@@ -8,16 +8,14 @@ import {withRouter} from "react-router-dom";
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
-        //this.props.getUserProfile(6253);
+        // this.props.getAuthUserData();
     }
     componentDidUpdate() {
-
     }
     render() {
         return <Header {...this.props} profile={this.props.profile}/>
     }
 }
-
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
@@ -26,7 +24,6 @@ const mapStateToProps = (state) => ({
 });
 
 //export default connect(mapStateToProps, { logout,getUserProfile }) (HeaderContainer);
-
 
 export default compose(
     connect(mapStateToProps,{logout,getUserProfile}),
