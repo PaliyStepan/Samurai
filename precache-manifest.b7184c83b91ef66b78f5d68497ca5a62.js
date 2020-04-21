@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8f11f40f24e66fe74e2a34abcb889c6c",
+    "revision": "e4ce478681075d233b60758780213fad",
     "url": "/Samurai/index.html"
   },
   {
-    "revision": "537569aaf37d1e346ba1",
-    "url": "/Samurai/static/css/main.5253f2fc.chunk.css"
+    "revision": "2e1e98be19815f6dcb3a",
+    "url": "/Samurai/static/css/main.6373889e.chunk.css"
   },
   {
-    "revision": "0bca86339875caf9aa1b",
-    "url": "/Samurai/static/js/2.8bf6b0b1.chunk.js"
+    "revision": "07a5a2bfbc64131cd4eb",
+    "url": "/Samurai/static/js/2.b7d8c58e.chunk.js"
   },
   {
     "revision": "0bc5220d92bfe34c3dec2f124a7bb286",
-    "url": "/Samurai/static/js/2.8bf6b0b1.chunk.js.LICENSE.txt"
+    "url": "/Samurai/static/js/2.b7d8c58e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "537569aaf37d1e346ba1",
-    "url": "/Samurai/static/js/main.e50f6cfe.chunk.js"
+    "revision": "2e1e98be19815f6dcb3a",
+    "url": "/Samurai/static/js/main.3bfc9d55.chunk.js"
   },
   {
     "revision": "7b0d94e13122c118f7ce",
