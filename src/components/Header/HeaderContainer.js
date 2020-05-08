@@ -7,11 +7,6 @@ import {compose} from "redux";
 import {withRouter} from "react-router-dom";
 
 class HeaderContainer extends React.Component {
-    componentDidMount() {
-        // this.props.getAuthUserData();
-    }
-    componentDidUpdate() {
-    }
     render() {
         return <Header {...this.props} profile={this.props.profile}/>
     }
@@ -22,8 +17,6 @@ const mapStateToProps = (state) => ({
     login: state.auth.login,
     profile: state.profilePage.profile
 });
-
-//export default connect(mapStateToProps, { logout,getUserProfile }) (HeaderContainer);
 
 export default compose(
     connect(mapStateToProps,{logout,getUserProfile}),

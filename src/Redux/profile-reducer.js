@@ -13,7 +13,6 @@ let initialState = {
         {id: 2, message: 'Было круто', likesCount: 216},
         {id: 3, message: 'Зря пошли, лучше бы остались дома', likesCount: 22},
     ],
-    // newPostText: 'Текст из State',
     profile: null,
     status: ""
 };

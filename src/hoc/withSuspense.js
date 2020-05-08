@@ -8,5 +8,4 @@ export const withSuspense = (Component) => {
         return <Suspense fallback={Preloader}><Component {...props}/> </Suspense>
     }
 
-
 };

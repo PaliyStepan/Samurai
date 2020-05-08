@@ -23,18 +23,6 @@ let User = ({user,followingInProgress,unfollow,follow}) => {
                             >Follow</button>
                     }
             </div>
-            {/*<div className={classes.usersItem__right}>*/}
-            {/*    <span>*/}
-            {/*        <span>*/}
-            {/*            <h3>{user.name}</h3>*/}
-            {/*            /!*<div>{user.status}</div>*!/*/}
-            {/*        </span>*/}
-            {/*        /!*<span>*!/*/}
-            {/*        /!*    <div>{"user.location.country"}</div>*!/*/}
-            {/*        /!*    <div>{"user.location.city"}</div>*!/*/}
-            {/*        /!*</span>*!/*/}
-            {/*    </span>*/}
-            {/*</div>*/}
         </div>
     );
 };

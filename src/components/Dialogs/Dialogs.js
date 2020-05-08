@@ -15,19 +15,6 @@ const Dialogs = (props) => {
 
     let dialogsElements = state.dialogs.map(dialog => <Dialogitem name={dialog.name} id={dialog.id} key={dialog.id}/>);
     let messagesElements = state.messages.map(message => <Message message={message.message} key={message.id}/>);
-    // let newMessageBody = state.newMessageBody;
-
-
-
-    // let onSendMessageClick = () => {
-    //     props.sendMessage();
-    //     // props.fake_store.dispatch(sendMessageCreator());
-    // };
-
-    // let onNewMessageChange = (e) => {
-    //    let body = e.target.value;
-    //     props.updateNewMessageBody(body);
-    // };
 
     let addNewMessage = (values) => {
         props.sendMessage(values.newMessageBody);
@@ -59,18 +46,9 @@ const AddMessageForm = (props) => {
             <div>
                 <Field component={Textarea} name="newMessageBody" placeholder="Enter your Message"
                        validate={[required, maxLength100]}
-
                 />
-                        {/*<textarea*/}
-                        {/*    value={newMessageBody}*/}
-                        {/*    placeholder="Enter your Message"*/}
-                        {/*    onChange={onNewMessageChange}*/}
-                        {/*>*/}
-
-                        {/*</textarea>*/}
             </div>
             <div>
-                {/*<button onClick={onSendMessageClick}>Send</button>*/}
                 <button>SEND</button>
             </div>
         </form>

@@ -8,7 +8,6 @@ import ProfileDataForm from "./ProfildeDataForm";
 import MyPostsContainer from "../MyPosts/MyPostsContainer";
 
 
-
 const ProfileInfo = ({profile,status, updateStatus,isOwner,savePhoto, saveProfile}) => {
     let [editMode, setEditMode] = useState(false);
 
@@ -52,13 +51,11 @@ const ProfileInfo = ({profile,status, updateStatus,isOwner,savePhoto, saveProfil
                     : <ProfileData devider={devider}
                                    profile={profile} isOwner={isOwner} goToEditMode={() => setEditMode(true)}/> }
 
-                {/*<ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>*/}
             </div>
         </div>
             {
                 isOwner && <MyPostsContainer/>
             }
-
         </React.Fragment>
     )
 };
@@ -72,9 +69,7 @@ const ProfileData = ({profile, isOwner, goToEditMode,devider}) => {
             <div className={classes.profileInfo__row}>
                 <span>My ID:</span>   <b>{profile.userId}  </b>
             </div>
-            {/*<div className={classes.profileInfo__row}>*/}
-            {/*    <span>Looking fora a job:</span>   <b>{profile.lookingForAJob ? "yes" : "no"}  </b>*/}
-            {/*</div>*/}
+
             <div className={classes.profileInfo__row}>
                 <span>My skills:</span>   <b>{profile.lookingForAJobDescription}  </b>
             </div>
@@ -93,10 +88,6 @@ const ProfileData = ({profile, isOwner, goToEditMode,devider}) => {
         </div>
     )
 };
-
-
-
-
 
 
 const Contact = ({contactTitle, contactValue}) => {

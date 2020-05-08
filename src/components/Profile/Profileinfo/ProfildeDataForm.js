@@ -7,10 +7,6 @@ const ProfileDataForm = ({handleSubmit, profile, error}) => {
     return  (
         <form onSubmit={handleSubmit} className={classes.profileForm}>
             <div className={classes.profileForm__row}>   <b>  Full name</b> {createField("Full name", "fullName", [], Input)} </div>
-            {/*<div className={classes.profileForm__row}>*/}
-            {/*    <b>Looking fora a job:</b>*/}
-            {/*    {createField ("", "lookingForAJob",[], Input,{type:"checkbox"} )}*/}
-            {/*</div>*/}
 
             <div className={classes.profileForm__row}>
                 <b>My skills:</b>
@@ -37,7 +33,6 @@ const ProfileDataForm = ({handleSubmit, profile, error}) => {
             { error && <div className={classes.formSummaryError}> {error}</div>
             }
            <button className={classes.mainBtn}>Save</button>
-
         </form>
     )
 };
