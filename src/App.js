@@ -4,7 +4,7 @@ import NavBar from './components/Navbar/Navbar';
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {BrowserRouter, Route, withRouter, Switch, Redirect} from "react-router-dom";
+import {Route, withRouter, Switch, Redirect, HashRouter} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
@@ -44,21 +44,10 @@ class App extends React.Component  {
                 <main className={classes.main}>
                     <NavBar/>
                     <div className={classes.content}>
-                        {/*<Route path='/dialogs'
-                           render={() =>  <Suspense fallback={Preloader}><DialogsContainer/> </Suspense>}
-                    />
-                    <Route path='/profile/:userId?'render={withSuspense(ProfileContainer)}/>
-                    <Route path='/users' render={withSuspense(UsersContainer)}/>
-                    */}
-
                         <Switch>
-                            {/*<Route exact path='/'*/}
-                            {/*       render={() => <ProfileContainer/>}*/}
-                            {/*/>*/}
                             <Route exact path='/'
                                    render={() => <Redirect to={"/profile"}/>}
                             />
-
                             <Route path='/dialogs'
                                    render={() => <DialogsContainer/>}
                             />
@@ -90,11 +79,11 @@ let AppContainer = compose(
     connect(mapStateToProps,{ initializeApp })) (App);
 
 const  MainApp = (props) => {
-   return <BrowserRouter>
+   return <HashRouter>
         <Provider store={store}>
             <AppContainer />
         </Provider>
-    </BrowserRouter>
+    </HashRouter>
 };
 
 export default MainApp;

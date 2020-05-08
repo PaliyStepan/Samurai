@@ -15,6 +15,19 @@
   width: 270px;
 }
 
+.note {
+  margin-top: 20px;
+  background-color: #dddddd;
+  padding: 20px;
+  h3 {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 10px;
+  }
+  p {
+    margin-bottom: 5px;
+  }
+}
 
 
 .item a {
@@ -58,6 +71,9 @@
     width: 100%;
     min-width: auto;
     margin-bottom: 10px;
+  }
+  .note {
+    margin-top: 10px;
   }
 }
 

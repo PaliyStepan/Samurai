@@ -45,6 +45,11 @@ const NavBar = () => {
             </NavLink>
           </li>
         </ul>
+        <div className={classes.note}>
+            <h3>Для входа используйте эти данные</h3>
+            <p><b>Login:</b> <span>testmyskill@mail.ru</span></p>
+            <p><b>Password:</b> <span>test2019</span></p>
+        </div>
       </nav>
     )
 };
