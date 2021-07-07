@@ -3,9 +3,46 @@
 }
 
 .post {
-    color: #fff;
-    border: 1px solid #000;
+    color: #000;
+    border: 1px solid #e3e4e8;
     margin-bottom: 40px;
     display: flex;
     flex-direction: column;
+    background-color: #EDEEF0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 15px;
+}
+
+.post__like {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+        & img {
+            opacity: 0.5;
+        }
+    }
+    & img {
+        width: 25px;
+        margin-right: 10px;
+    }
+    & span {
+        font-size: 15px;
+        line-height: 15px;
+        margin-top: 5px;
+    }
+}
+
+.postText {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+
+@media only screen and (max-width: 575px) {
+    .postText {
+        font-size: 14px;
+    }
 }

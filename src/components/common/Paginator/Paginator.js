@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import classes from './Paginator.module.scss';
-// import cn from "classname"
+import cn from "classnames";
+import arrowIMG from "../../../Assets/Images/arrow.svg";
 
 
 let Paginator = ({totalUsersCount,pageSize,onPageChanged,currentPage,portionSize = 10}) => {
@@ -23,27 +24,33 @@ let Paginator = ({totalUsersCount,pageSize,onPageChanged,currentPage,portionSize
     return (
             <div className={classes.pagination}>
                 { portionNumber > 1 &&
-                <button onClick={ ()=> { setPortionNumber(portionNumber - 1)}}>PREV</button> }
+                <button onClick={ ()=> { setPortionNumber(portionNumber - 1)}} className={ cn (
+                    classes.pagination__btn,  classes.pagination__btn_prev
+                )}><img src={arrowIMG} alt="arrow"/></button> }
 
-                {pages
-                    .filter(p => p >= leftPortionPageNumber && p<=rightPortionPageNumber)
-                    .map((p) =>{
-                        return <span className={ ({
-                            [classes.selectedPage] : currentPage === p
-                        }, classes.pageNumber)}
-                                     key={p}
-                                     onClick={ (e) =>{
-                                         onPageChanged(p)
-                                     }}>
+                <div className={classes.pagination__items}>{
+                    pages
+                    .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
+                    .map((p) => {
+                            return <span className={cn({
+                                [classes.selectedPage]: currentPage === p
+                            }, classes.pageNumber)}
+                                         key={p}
+                                         onClick={(e) => {
+                                             onPageChanged(p)
+                                         }}>
                             {p}
                         </span>
                         }
-                    )
-                }
+                        )
+                    }
+                </div>
 
 
                 { portionCount > portionNumber &&
-                <button onClick={ ()=> { setPortionNumber(portionNumber + 1)}}>NEXT</button> }
+                <button onClick={ ()=> { setPortionNumber(portionNumber + 1)}} className={ cn (
+                    classes.pagination__btn,  classes.pagination__btn_next
+                )}> <img src={arrowIMG} alt="arrow"/> </button> }
 
 
             </div>

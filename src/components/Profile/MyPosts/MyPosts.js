@@ -6,19 +6,16 @@ import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {Textarea} from "../../common/FromControls/FormsControls";
 
 
-const maxLength10 = maxLengthCreator(10);
+const maxLength100 = maxLengthCreator(100);
 
 const AddNewPostForm = (props) => {
   return (
-      <form onSubmit={props.handleSubmit}>
-          <div>
-              <Field component={Textarea} name="newPostText" placeholder="Enter your Message"
-                     validate={[required, maxLength10 ]}
-              />
-          </div>
-          <div>
-              <button>Добавить</button>
-          </div>
+      <form onSubmit={props.handleSubmit} className={classes.postsForm}>
+          <Field component={Textarea} name="newPostText" placeholder="Enter your Message"
+                 validate={[required, maxLength100 ]}
+          />
+
+          <button className={classes.mainBtn}>Add</button>
       </form>
   )
 };
@@ -29,10 +26,9 @@ const AddPostFormRedux = reduxForm({
 
 
 const MyPosts = React.memo(props => {
-    // console.log("sdas")
 
     let postsElements =
-        props.posts.map(post => <Post message={post.message} like={post.likesCount} key={post.id}/>)
+        props.posts.map((post, index) => <Post message={post.message} like={post.likesCount} key={index}/>)
     let onAddPost = (values) => {
         props.addPost(values.newPostText)
     };
@@ -40,8 +36,10 @@ const MyPosts = React.memo(props => {
 
     return (
         <div className={classes.postsBlock}>
-            <h3>Мои посты</h3>
-            <AddPostFormRedux onSubmit={onAddPost}/>
+            <div className={classes.postBlock}>
+                <h3>Мои посты</h3>
+                <AddPostFormRedux onSubmit={onAddPost}/>
+            </div>
             <div className={classes.posts}>
                 {postsElements}
             </div>
